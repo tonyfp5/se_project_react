@@ -1,0 +1,13 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 85px 40px 24px;
+}
+
+.footer__text,
+.footer__year {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+}

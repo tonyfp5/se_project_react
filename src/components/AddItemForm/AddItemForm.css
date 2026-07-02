@@ -1,0 +1,40 @@
+.modal__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__input {
+  margin-bottom: 24px;
+
+  border: none;
+  border-bottom: 1px solid #000;
+
+  padding: 8px 0;
+
+  font-size: 16px;
+
+  outline: none;
+}
+
+.modal__submit {
+  width: 124px;
+
+  height: 36px;
+
+  border: none;
+
+  border-radius: 4px;
+
+  background: black;
+
+  color: white;
+
+  cursor: pointer;
+
+  font-size: 16px;
+}
+
+.modal__submit:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
