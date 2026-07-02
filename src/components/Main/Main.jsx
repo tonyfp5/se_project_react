@@ -1,7 +1,7 @@
 import ItemCard from "../ItemCard/ItemCard.jsx";
 import "./Main.css";
 
-function Main({ onAddClick, items, onLike, onDelete }) {
+function Main({ onAddClick, items, onLike, onDelete, onCardClick }) {
   return (
     <main className="main">
       <div className="main__header">
@@ -19,6 +19,7 @@ function Main({ onAddClick, items, onLike, onDelete }) {
             item={item}
             onLike={() => onLike(item._id)}
             onDelete={() => onDelete(item._id)}
+            onCardClick={() => onCardClick(item)}
           />
         ))}
       </section>

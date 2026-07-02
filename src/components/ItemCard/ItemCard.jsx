@@ -1,11 +1,16 @@
 import "./ItemCard.css";
 
-function ItemCard({ item, onLike, onDelete }) {
+function ItemCard({ item, onLike, onDelete, onCardClick }) {
   return (
     <div className="card">
       <h2 className="card__name">{item.name}</h2>
 
-      <img className="card__image" src={item.imageUrl} alt={item.name} />
+      <img
+        className="card__image"
+        src={item.imageUrl}
+        alt={item.name}
+        onClick={onCardClick}
+      />
 
       <div className="card__buttons">
         <button

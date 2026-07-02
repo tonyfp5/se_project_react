@@ -4,13 +4,16 @@ import Main from "./components/Main/Main.jsx";
 import ModalWithForm from "./components/ModalWithForm/ModalWithForm.jsx";
 import WeatherCard from "./components/WeatherCard/WeatherCard.jsx";
 import Footer from "./components/Footer/Footer.jsx";
+import ItemModal from "./components/ItemModal/ItemModal.jsx";
 import "./App.css";
+
 import { initialItems } from "./utils/mockData";
 import { useWeather } from "./hooks/useWeather";
 import { clothingRules } from "./utils/clothingRules";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCard, setSelectedCard] = useState(null);
   const [items, setItems] = useState(initialItems);
 
   const { temperature, error } = useWeather();
@@ -21,6 +24,11 @@ function App() {
 
   function handleCloseModal() {
     setIsModalOpen(false);
+    setSelectedCard(null);
+  }
+
+  function handleCardClick(item) {
+    setSelectedCard(item);
   }
 
   function handleAddItem(newItem) {
@@ -61,13 +69,15 @@ function App() {
         items={getFilteredItems()}
         onLike={handleLike}
         onDelete={handleDelete}
+        onCardClick={handleCardClick}
       />
 
       {isModalOpen && (
-        <ModalWithForm
-          onClose={handleCloseModal}
-          onAddItem={handleAddItem}
-        />
+        <ModalWithForm onClose={handleCloseModal} onAddItem={handleAddItem} />
+      )}
+
+      {selectedCard && (
+        <ItemModal item={selectedCard} onClose={handleCloseModal} />
       )}
 
       <Footer />
