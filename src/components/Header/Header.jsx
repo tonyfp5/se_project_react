@@ -1,29 +1,28 @@
 import "./Header.css";
+import logo from "../../assets/logo.png"; 
+import avatar from "../../assets/avatar.png";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
-function Header({ onAddClick }) {
-  const currentDate = new Date().toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-  });
+function Header({ handleAddClick, weatherData }) {
+  const currentDate = new Date().toLocaleString
+  ('default', { month: 'long', day: 'numeric' });
 
   return (
     <header className="header">
-      <div className="header__left">
-        <h1 className="header__logo">WTWR</h1>
-
-        <p className="header__date">
-          {currentDate}
-        </p>
-      </div>
-
-      <button
-        className="header__add-btn"
-        onClick={onAddClick}
-      >
-        + Add Clothes
+      <img className="header__logo" src={logo} alt="Logo" />
+      <p className="header__date-and-location">
+        {currentDate}, {weatherData.city}</p>
+      <ToggleSwitch />
+      <button type="button" className="header__add-clothes-btn" onClick={handleAddClick}>
+        + Add clothes
       </button>
-    </header>
+      
+      <div className="header__user-container">
+        <p className="header__username"> Terrence Tegegne</p>
+        <img src={avatar} alt="Terrence Tegegne" className="header__avatar" />
+      </div>
+    </header>  
   );
 }
-
+ 
 export default Header;

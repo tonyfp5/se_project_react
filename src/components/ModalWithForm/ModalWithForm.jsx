@@ -1,44 +1,51 @@
-import { useEffect } from "react";
-import AddItemForm from "../AddItemForm/AddItemForm.jsx";
 import "./ModalWithForm.css";
+import closeIcon from "../../assets/close.png";
 
-function ModalWithForm({ onClose, onAddItem }) {
-  useEffect(() => {
-    function handleEscape(evt) {
-      if (evt.key === "Escape") {
-        onClose();
-      }
-    }
-
-    document.addEventListener("keydown", handleEscape);
-
-    return () => {
-      document.removeEventListener("keydown", handleEscape);
-    };
-  }, [onClose]);
-
-  function handleOverlayClick(e) {
-    if (e.target === e.currentTarget) {
-      onClose();
-    }
-  }
-
+function ModalWithForm({
+  name,
+  title,
+  buttonText,
+  children,
+  isOpen,
+  onClose,
+  onSubmit,
+}) {
   return (
-    <div className="modal" onClick={handleOverlayClick}>
+    <div
+      className={`modal modal_type_${name} ${
+        isOpen ? "modal_opened" : ""
+      }`}
+    >
       <div className="modal__content">
+        <h2 className="modal__title">{title}</h2>
+
         <button
+          type="button"
           className="modal__close"
           onClick={onClose}
+          aria-label="Close modal"
         >
-          X
+          <img
+            src={closeIcon}
+            alt="Close"
+            className="modal__close-icon"
+          />
         </button>
 
-        <h2>Add Garment</h2>
+        <form
+          className="modal__form"
+          name={name}
+          onSubmit={onSubmit}
+        >
+          {children}
 
-        <AddItemForm
-          onClose={onClose}
-          onAddItem={onAddItem}
-        />
+          <button
+            type="submit"
+            className="modal__submit"
+          >
+            {buttonText}
+          </button>
+        </form>
       </div>
     </div>
   );

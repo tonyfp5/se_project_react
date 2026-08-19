@@ -1,22 +1,39 @@
 import "./ItemModal.css";
+import closeIcon from "../../assets/close.png";
 
-function ItemModal({ item, onClose }) {
-  if (!item) {
+function ItemModal({ isOpen, onClose, card }) {
+  if (!card || !card.link) {
     return null;
   }
 
   return (
-    <div className="modal" onClick={onClose}>
-      <div className="item-modal" onClick={(evt) => evt.stopPropagation()}>
-        <button className="item-modal__close" onClick={onClose} type="button">
-          X
+    <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
+      <div className="modal__content modal__content_type_image">
+        <button
+          type="button"
+          className="modal__close"
+          onClick={onClose}
+          aria-label="Close modal"
+        >
+          <img
+            src={closeIcon}
+            alt="Close modal"
+            className="modal__close-icon"
+          />
         </button>
 
-        <img className="item-modal__image" src={item.imageUrl} alt={item.name} />
+        <img
+          src={card.link}
+          alt={card.name}
+          className="modal__image"
+        />
 
-        <div className="item-modal__footer">
-          <h2 className="item-modal__name">{item.name}</h2>
-          <p className="item-modal__weather">Weather: {item.type}</p>
+        <div className="modal__footer">
+          <h2 className="modal__caption">{card.name}</h2>
+
+          <p className="modal__weather">
+            Weather: {card.weather}
+          </p>
         </div>
       </div>
     </div>

@@ -1,16 +1,77 @@
-# React + Vite
+# WTWR (What to Wear?)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## About the Project
 
-Currently, two official plugins are available:
+WTWR (What to Wear?) is a React application that recommends clothing based on the current weather.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The app retrieves live weather information from the OpenWeather API and displays clothing items that match the current temperature. Users can browse clothing items, open a larger preview by clicking on any item, and add new garments through a modal form.
 
-## React Compiler
+This project was developed as part of the TripleTen Software Engineering Bootcamp to practice building modern React applications using reusable components, state management, hooks, and API integration.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Current weather using the OpenWeather API
+- Temperature-based clothing recommendations
+- Clothing item preview modal
+- Add new clothing items
+- Responsive layout
+- Reusable modal components
+- Keyboard support (Escape key)
+- Accessible forms and buttons
+
+---
+
+## Technologies
+
+- React
+- Vite
+- JavaScript (ES6+)
+- HTML5
+- CSS3
+- OpenWeather API
+- Fetch API
+- Git
+- GitHub
+
+---
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone <repository-url>
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+---
+
+## Future Improvements
+
+Some planned improvements include:
+
+- User authentication
+- Edit clothing items
+- Delete clothing items
+- Save favorite garments
+- Backend integration
+- User profiles
+
+---
+
+## Author
+
+Antonio Gregorio Asumu Efua.

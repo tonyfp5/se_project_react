@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export function useWeather() {
-  const [temperature, setTemperature] = useState(null);
+  const [temperature, setTemperature] = useState(72);
   const [error, setError] = useState(null);
 
   useEffect(() => {

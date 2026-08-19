@@ -1,27 +1,28 @@
-import ItemCard from "../ItemCard/ItemCard.jsx";
+import WeatherCard from "../WeatherCard/WeatherCard";
+import ItemCard from "../ItemCard/ItemCard";
 import "./Main.css";
 
-function Main({ onAddClick, items, onLike, onDelete, onCardClick }) {
+function Main({ weatherData, clothingItems, handleCardClick }) {
   return (
-    <main className="main">
-      <div className="main__header">
-        <p className="main__text">Today is a good day to wear:</p>
-
-        <button className="main__add-btn" onClick={onAddClick}>
-          + Add clothes
-        </button>
-      </div>
+    <main>
+      <WeatherCard weatherData={weatherData} />
 
       <section className="cards">
-        {items.map((item) => (
-          <ItemCard
-            key={item._id}
-            item={item}
-            onLike={() => onLike(item._id)}
-            onDelete={() => onDelete(item._id)}
-            onCardClick={() => onCardClick(item)}
-          />
-        ))}
+        <p className="cards__text">
+          Today is {Math.round(weatherData.temp.F)}&deg; F. You may want to wear:
+        </p>
+
+        <ul className="cards__list">
+          {clothingItems
+            .filter((item) => item.weather === weatherData.type)
+            .map((item) => (
+              <ItemCard
+                key={item._id}
+                item={item}
+                onCardClick={handleCardClick}
+              />
+            ))}
+        </ul>
       </section>
     </main>
   );
